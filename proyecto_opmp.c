@@ -24,7 +24,7 @@ int main(int argc, char *argv[])
         global_solutions += solutions;
     }
 
-    printf("El numero de soluciones es %d\n", global_solutions);
+    printf("Las soluciones son: %d\n", global_solutions);
     return 0;
 }
 
