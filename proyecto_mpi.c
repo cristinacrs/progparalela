@@ -34,7 +34,7 @@ int main(void)
 
         int all_options[big_size][16];
         int counter = 0;
-    // create all options
+
         for (int a = 0; a <= 1; a++)
         { //1
             int aux[16];
@@ -114,10 +114,13 @@ int main(void)
 
             if(res){
                 printf("Del nodo %d posición %d resultado = %d", my_rank, position, res);
+                for(int i=0; i<16; i++){
+                    printf("%d", all_options[position][i]);
+                }
             printf("\n");
             }
         }
-    // }
+
 
     return 0;
 }
@@ -125,7 +128,7 @@ int main(void)
 int solver(int *arreglo)
 {
 
-    // longitud 1
+ 
     int a = arreglo[0];
     int b = arreglo[1];
     int c = arreglo[2];
@@ -143,7 +146,7 @@ int solver(int *arreglo)
     int o = arreglo[14];
     int p = arreglo[15];
 
-    // negaciones longitud 1
+  
     int _b = !b;
     int _d = !d;
     int _e = !e;
@@ -157,7 +160,6 @@ int solver(int *arreglo)
     int _o = !o;
     int _p = !p;
 
-    // longitud 2
     int ab = a || b;
     int cd = c || d;
     int _b_d = _b || _d;
@@ -177,7 +179,6 @@ int solver(int *arreglo)
     int op = o || p;
     int _pg = _p || g;
 
-    // longitud 4
     int ab_b_d = ab && _b_d;
     int cd_d_e = cd && _d_e;
     int e_ffg = e_f && fg;
@@ -187,25 +188,23 @@ int solver(int *arreglo)
     int ljmn = lj && mn;
     int op_pg = op && _pg;
 
-    // longitud 6
     int n_oop_pg = n_o && op_pg;
 
-    // longitud 8
+
     int ab_b_dcd_d_e = ab_b_d && cd_d_e;
     int e_ffgf_gh_i = e_ffg && f_gh_i;
     int iji_j_j_kkl = iji_j && _j_kkl;
     int _h_nn_oop_pg = _h_n && n_oop_pg;
 
-    // longitud 12
     int ljmn_h_nn_oop_pg = ljmn && _h_nn_oop_pg;
 
-    // longitud 16
+
     int ab_b_dcd_d_ee_ffgf_gh_i = ab_b_dcd_d_e && e_ffgf_gh_i;
 
-    // longitud 20
+
     int iji_j_j_kklljmn_h_nn_oop_pg = iji_j_j_kkl && ljmn_h_nn_oop_pg;
 
-    // resultado
+
     int res = ab_b_dcd_d_ee_ffgf_gh_i && iji_j_j_kklljmn_h_nn_oop_pg;
     return res;
 }
