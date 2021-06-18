@@ -12,7 +12,7 @@ int main(int argc, char *argv[])
     global_solutions=0;
 
 
-#pragma omp parallel private(lo, hi, id, i, solutions) reduction(+ \ : global_solutions)
+#pragma omp parallel private(lo, hi, id, i, solutions) reduction(+ : global_solutions)
     {
         hilos = omp_get_num_threads();
         id = omp_get_thread_num();
