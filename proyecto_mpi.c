@@ -113,7 +113,7 @@ int main(void)
             int res = solver(all_options[position]);
 
             if(res){
-                printf("From rank %d index number %d solutions equals %d", my_rank, position, res);
+                printf("Del nodo %d posición %d resultado = %d", my_rank, position, res);
             printf("\n");
             }
         }

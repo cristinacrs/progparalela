@@ -11,7 +11,7 @@ int main(int argc, char *argv[])
     global_solutions=0;
 
 
-#pragma omp parallel private(lo,hi,id,solutions) reduction(+:global_solutions){
+#pragma omp parallel private(lo,hi,id,solutions) reduction(+:global_solutions)
     hilos = omp_get_num_threads();
     id = omp_get_thread_num();
     lo = id*N/hilos;
@@ -20,7 +20,8 @@ int main(int argc, char *argv[])
     for(i=lo;i<hi;i++)
         solutions += check_circuit(id,i);
     global_solutions += solutions;  
-}
+
+
 printf("El numero de soluciones es %d \n", global_solutions);
 return 0;
 
